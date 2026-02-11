@@ -1,4 +1,4 @@
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -15,22 +15,36 @@ const Books = () => {
     };
     fetchAllBooks();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete("http://localhost:8800/books/" + id);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <h1>Fisho Bookshop</h1>
       <div className="books">
         {books.map((book) => (
           <div key={book.id} className="book">
-            {book.cover && <img src={book.cover} alt="" />}
+            {<img src={book.cover} alt="" />}
             <h2>{book.title}</h2>
             <p>{book.description}</p>
             <span>${book.price}</span>
+            <button className="Delete" onClick={() => handleDelete(book.id)}>
+              Delete
+            </button>
+            <button className="Update"><Link to={`/update/${book.id}`}>Update</Link></button>
           </div>
         ))}
       </div>
-        <button>
+      <button>
         <Link to="/add">Add New Book</Link>
-        </button>
+      </button>
     </div>
   );
 };

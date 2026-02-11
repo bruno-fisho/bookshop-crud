@@ -15,6 +15,9 @@
 .book {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 img {
@@ -22,4 +25,39 @@ img {
   height: 300px;
   object-fit: cover;
   background-color: antiquewhite;
+}
+
+.Delete {
+  background-color: white;
+  color: rgb(241,100,100);
+  border: 1px solid gainsboro;
+  padding: 3px 6px;
+  cursor: pointer;
+} 
+
+.Update {
+  background-color: white;
+  color: rgb(139,139, 239);
+  border: 1px solid gainsboro;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid gainsboro;
+}
+
+.formButton {
+  padding: 10px;
+  background-color: lightskyblue;
+  border: none;
+  cursor: pointer;
 }
